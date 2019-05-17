@@ -13,6 +13,7 @@
   },
   "scripts": {
     "start": "node ./server/server.js",
+    "seed": "node ./database/seed.js",
     "server:dev": "nodemon ./server/server.js",
     "build:dev": "webpack --config webpack.config.js --watch --mode=development",
     "pretest": "eslint \"**/*\" --parser-options=jsx:true",

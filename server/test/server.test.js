@@ -1,6 +1,6 @@
 describe('server', () => {
   // useless test just to practice with jest for now
-  test('should display "Buying Zone" text on the page', () => {
+  test('four should equal four', () => {
     expect(4).toBe(4);
   });
 });
