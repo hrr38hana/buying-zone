@@ -1,13 +1,13 @@
-# Project Name
+# Coge
 
-> Project description
+> This project attempts to recreate the functionality implemented on the Trek Bikes product
+> info page.
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/hrr38hana/reviews_module
+  - https://github.com/hrr38hana/andrewpiao1-service
+  - https://github.com/hrr38hana/NapoleonDLP-Service
 
 ## Table of Contents
 
@@ -17,7 +17,12 @@
 
 ## Usage
 
-> Some usage instructions
+> From within the root directory:
+- run `npm run server:dev` to start the server in dev mode
+  - run `npm start` to start the server in production mode
+- run `npm run build:dev` to compile the source files with webpack
+- run `npm test` to run the project's test suite
+- visit http://localhost:3001/ to view the app in dev mode
 
 ## Requirements
 

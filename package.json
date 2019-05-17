@@ -1,17 +1,49 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
-  "author": "",
-  "license": "",
+  "name": "buying-zone",
+  "version": "1.0.0",
+  "description": "Buying zone module for FEC-1",
+  "author": "Adam Gipril",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hrr38hana/buying-zone.git"
+  },
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
+    "start": "node ./server/server.js",
+    "server:dev": "nodemon ./server/server.js",
+    "build:dev": "webpack --config webpack.config.js --watch --mode=development",
+    "pretest": "eslint \"**/*\"",
+    "test": "jest"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.8",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.8.0",
+    "babel-loader": "^8.0.6",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.0",
+    "jest": "^24.8.0",
+    "jest-puppeteer": "^4.1.1",
+    "puppeteer": "^1.16.0",
+    "superagent": "^5.0.5",
+    "supertest": "^4.0.2",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev": "^1.1.1"
+  },
+  "jest": {
+    "verbose": true,
+    "preset": "jest-puppeteer"
   }
 }
