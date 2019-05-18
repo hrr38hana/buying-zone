@@ -77,6 +77,7 @@ MongoDB and the `mongo` shell
 ```
 npm test
 ```
+- Checks all `.js` and `.jsx` files against Airbnb style guide using ESLint
 - Runs all test suites
 
 ## Deploying
