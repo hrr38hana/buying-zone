@@ -3,8 +3,6 @@ const mongoose = require('mongoose');
 mongoose.Promise = Promise;
 mongoose.connect('mongodb://localhost/trekbikes', { useNewUrlParser: true });
 
-const db = mongoose.connection;
-
 const { Schema } = mongoose;
 
 const colorSchema = new Schema({
@@ -28,4 +26,4 @@ const productSchema = new Schema({
 const Color = mongoose.model('Color', colorSchema);
 const Product = mongoose.model('Product', productSchema);
 
-module.exports = { Product, Color, db };
+module.exports = { Product, Color, db: mongoose.connection };
