@@ -1,6 +1,6 @@
-const mockData = require('./mockData');
+const mockData = require('./data');
 
-const { Color } = require('./db');
+const { Product, Color } = require('../db');
 
 const random = (ceil, floor = 0) => Math.max(Math.floor(Math.random() * (ceil + 1)), floor);
 
@@ -45,6 +45,29 @@ const randomColors = () => {
   return colors;
 };
 
+const mockProduct = (id) => {
+  const product = { id };
+
+  product.name = randomProductName();
+  product.description = randomProductDescription();
+  product.price = random(250, 10);
+  product.colors = randomColors();
+  product.reviewAverage = random(5, 1);
+  product.releaseDate = randomReleaseDate();
+
+  return new Product(product);
+};
+
+const seed = async () => {
+  await Product.deleteMany({});
+  for (let i = 1; i < 100; i++) {
+    const product = mockProduct(i);
+    product.save();
+  }
+
+  return mockProduct(100).save();
+};
+
 module.exports = {
   random,
   selectRandomFrom,
@@ -53,4 +76,6 @@ module.exports = {
   randomReleaseDate,
   randomColors,
   mockColor,
+  mockProduct,
+  seed,
 };
