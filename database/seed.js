@@ -24,9 +24,4 @@ const seed = async () => {
   return mockProduct(100).save();
 };
 
-(async () => {
-  await seed();
-  process.exit();
-})();
-
 module.exports = { mockProduct, seed };
