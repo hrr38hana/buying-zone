@@ -17,12 +17,16 @@ const mockProduct = (id) => {
 
 const seed = async () => {
   await Product.deleteMany({});
-  for (let i = 0; i < 100; i++) {
-    const product = mockProduct();
+  for (let i = 1; i < 100; i++) {
+    const product = mockProduct(i);
     product.save();
   }
+  return mockProduct(100).save();
 };
 
-seed();
+(async () => {
+  await seed();
+  process.exit();
+})();
 
 module.exports = { mockProduct, seed };
