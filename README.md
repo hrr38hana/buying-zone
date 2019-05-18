@@ -61,6 +61,25 @@ files
 ```
 npm run seed
 ```
+npm run seed
+```
+
+- Seeds the database by running `/database/seed.js`
+
+#### Manual database queries
+
+- Ensure MongoDB is running
+- From within the `mongo` shell, run `use trekbikes`, then query the database as desired
+
+See [MongoDB docs](https://docs.mongodb.com/manual/mongo/) for more detailed information on running
+MongoDB and the `mongo` shell
+
+#### Testing
+
+```
+npm test
+```
+- Runs all test suites
 
 - Seeds the database by running `/database/seed.js`
 
