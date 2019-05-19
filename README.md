@@ -22,14 +22,14 @@ making it yours with just the click of a button.
 - Display whether a product is in-stock, based on options and quantity selected
 - Allow for a purchase to be started at the click of a button
 
-## Development
+## Developing
 
 Setting Buying Zone up for development is quick and easy!
 
 First, be sure to have
-[MongoDB](https://docs.mongodb.com/manual/installation/) and
-[Node.js](https://nodejs.org/en/download/) installed. Buying Zone currently runs on Node version 11
-or newer. Next, fork the repository, and on your development machine run the following commands.
+[MongoDB](https://docs.mongodb.com/manual/installation/) (@ version 4+) and
+[Node.js](https://nodejs.org/en/download/) (@ version 9+) installed. Next, fork the repository, and
+on your development machine run the following commands.
 
 ```
 git clone https://github.com/<your-path>/buying-zone.git
