@@ -1,44 +1,101 @@
-# Coge
+# Buying Zone
 
-> This project attempts to recreate the functionality implemented on the Trek Bikes product
-> info page.
+> Where purchasing is made easy
 
-## Related Projects
-
-  - https://github.com/hrr38hana/reviews_module
-  - https://github.com/hrr38hana/andrewpiao1-service
-  - https://github.com/hrr38hana/NapoleonDLP-Service
+Discovering all the features, info, and technology of a product is great, but what about when it
+comes time to purchase? The buying zone makes purchasing easy by summarizing a product's name,
+average ratings, and a brief description, and by allowing any desired options to be selected before
+making it yours with just the click of a button.
 
 ## Table of Contents
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+1. [Features](#features)
+1. [Developing](#developing)
+1. [Deploying](#deploying)
+1. [Contributing](#contributing)
+1. [Links](#links)
 
-## Usage
+## Features
 
-> From within the root directory:
-- run `npm run server:dev` to start the server in dev mode
-  - run `npm start` to start the server in production mode
-- run `npm run build:dev` to compile the source files with webpack
-- run `npm test` to run the project's test suite
-- visit http://localhost:3001/ to view the app in dev mode
+- Present key details relevant to purchasing a product in one consolidated place
+- Allow selection of color and size options
+- Display whether a product is in-stock, based on options and quantity selected
+- Allow for a purchase to be started at the click of a button
 
-## Requirements
+## Developing
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
+Setting Buying Zone up for development is quick and easy!
 
-- Node 6.13.0
-- etc
+First, be sure to have
+[MongoDB](https://docs.mongodb.com/manual/installation/) (@ version 4+) and
+[Node.js](https://nodejs.org/en/download/) (@ version 9+) installed. Next, fork the repository, and
+on your development machine run the following commands.
 
-## Development
-
-### Installing Dependencies
-
-From within the root directory:
-
-```sh
-npm install -g webpack
+```
+git clone https://github.com/<your-path>/buying-zone.git
+cd buying-zone/
 npm install
 ```
 
+Running Buying Zone for development requires at least two open terminals:
+
+### First terminal:
+```
+npm run build:dev
+```
+- Compiles the project using webpack in development mode. The `--watch` flag is set so changes are
+automatically re-compiled
+
+### Second terminal:
+```
+npm run server:dev
+```
+- Starts a local server listening at port 3001. Uses `nodemon` to restart the server upon changes to
+files
+- Visit http://localhost:3001/ to see the app running in the browser
+
+### Additional development options:
+
+#### Seeding the database
+
+```
+npm run seed
+```
+
+- Seeds the database by running `/database/seed.js`
+
+#### Manual database queries
+
+- Ensure MongoDB is running
+- From within the `mongo` shell, run `use trekbikes`, then query the database as desired
+
+See [MongoDB docs](https://docs.mongodb.com/manual/mongo/) for more detailed information on running
+MongoDB and the `mongo` shell
+
+#### Testing
+
+```
+npm test
+```
+- Checks all `.js` and `.jsx` files against Airbnb style guide using ESLint
+- Runs all test suites
+
+## Deploying
+
+Buying Zone is not yet deployable. Please check back later!
+
+## Contributing
+
+This project is being used for education purposes, and is not intended to be openly contributed to.
+That being said, any feedback or suggestions are warmly welcomed, and may even enhance the
+education process! Feel free to contact adam.gipril@icloud.com directly with any suggestions or
+improvements.
+
+## Links
+
+- Project homepage: https://github.com/hrr38hana/buying-zone
+- Issue tracker: https://github.com/hrr38hana/buying-zone/issues
+- Related projects:
+  - https://github.com/hrr38hana/reviews_module
+  - https://github.com/hrr38hana/andrewpiao1-service
+  - https://github.com/hrr38hana/NapoleonDLP-Service
