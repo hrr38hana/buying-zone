@@ -26,8 +26,7 @@ making it yours with just the click of a button.
 
 Setting Buying Zone up for development is quick and easy!
 
-First, be sure to have
-[MongoDB](https://docs.mongodb.com/manual/installation/) (@ version 4+) and
+First, be sure to have [MongoDB](https://docs.mongodb.com/manual/installation/) (@ version 4+) and
 [Node.js](https://nodejs.org/en/download/) (@ version 9+) installed. Next, fork the repository, and
 on your development machine run the following commands.
 
@@ -61,25 +60,6 @@ files
 ```
 npm run seed
 ```
-npm run seed
-```
-
-- Seeds the database by running `/database/seed.js`
-
-#### Manual database queries
-
-- Ensure MongoDB is running
-- From within the `mongo` shell, run `use trekbikes`, then query the database as desired
-
-See [MongoDB docs](https://docs.mongodb.com/manual/mongo/) for more detailed information on running
-MongoDB and the `mongo` shell
-
-#### Testing
-
-```
-npm test
-```
-- Runs all test suites
 
 - Seeds the database by running `/database/seed.js`
 
