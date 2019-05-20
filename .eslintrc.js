@@ -20,4 +20,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
+  rules: {
+    'no-plusplus': ['error', { "allowForLoopAfterthoughts": true } ],
+  },
 };
