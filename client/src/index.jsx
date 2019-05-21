@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import styled, { createGlobalStyle } from 'styled-components';
-import ColorSwatch from './components/ColorSwatch';
+import ColorSelector from './components/ColorSelector';
 
 class BuyingZone extends Component {
   constructor() {
@@ -29,6 +29,7 @@ class BuyingZone extends Component {
       }
     `;
     const ProductName = styled.h1`
+      font-weight: 900;
     `;
     const Price = styled.span`
       font-size: 1.2em;
@@ -57,8 +58,9 @@ class BuyingZone extends Component {
         <p>
           {currentProduct ? currentProduct.description : 'Loading...'}
         </p>
-        <ColorSwatch
-          color={currentProduct ? currentProduct.colors[currentColor].rgb.join(',') : '0, 0, 0'}
+        <br />
+        <ColorSelector
+          colors={currentProduct ? currentProduct.colors : []}
         />
       </div>
     );

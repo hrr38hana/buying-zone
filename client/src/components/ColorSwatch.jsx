@@ -7,6 +7,7 @@ const ColorSwatch = ({ color }) => {
     position: relative;
     height: 20px;
     width: 20px;
+    margin: 0 3px;
     border: 2px solid rgb(143, 143, 143);
     border-radius: 50%;
     display: inline-block;
