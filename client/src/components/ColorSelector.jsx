@@ -9,12 +9,12 @@ const ColorSelector = ({ colors }) => {
     font-style: italic;
   `;
 
-  const [selectedColor, setSelectedColor] = useState(colors[0]);
+  const [selectedColor, setSelectedColor] = useState(null);
   useEffect(() => {
     if (!selectedColor) {
       setSelectedColor(colors[0]);
     }
-  });
+  }, [selectedColor, colors]);
 
   return (
     <div>
@@ -29,11 +29,11 @@ const ColorSelector = ({ colors }) => {
         </ColorDetail>
       </div>
       <br />
-      {colors.map((color, i) => (
+      {colors.map(color => (
         <ColorSwatch
           color={color.rgb.join(',')}
           isSelected={selectedColor ? color._id === selectedColor._id : false}
-          onClick={() => setSelectedColor(colors[i])}
+          onClick={() => setSelectedColor(color)}
           key={color._id}
         />
       ))}
