@@ -8,7 +8,6 @@ class BuyingZone extends Component {
     super();
     this.state = {
       currentProduct: null,
-      currentColor: 0,
       id: 52,
     };
   }
@@ -21,7 +20,7 @@ class BuyingZone extends Component {
   }
 
   render() {
-    const { currentProduct, currentColor } = this.state;
+    const { currentProduct } = this.state;
     const GlobalStyle = createGlobalStyle`
       body {
         box-sizing: border-box;

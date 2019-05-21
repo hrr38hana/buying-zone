@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ColorSwatch from './ColorSwatch';
@@ -10,6 +10,11 @@ const ColorSelector = ({ colors }) => {
   `;
 
   const [selectedColor, setSelectedColor] = useState(colors[0]);
+  useEffect(() => {
+    if (!selectedColor) {
+      setSelectedColor(colors[0]);
+    }
+  });
 
   return (
     <div>
@@ -18,17 +23,18 @@ const ColorSelector = ({ colors }) => {
         <ColorDetail>
           {selectedColor ? selectedColor.name : 'Loading...'}
         </ColorDetail>
-        {'; Finish / '}
+        {selectedColor && selectedColor.finish ? '; Finish / ' : ''}
         <ColorDetail>
-          {selectedColor ? selectedColor.finish : 'Loading...'}
+          {selectedColor ? selectedColor.finish : ''}
         </ColorDetail>
       </div>
       <br />
-      {colors.map(color => (
+      {colors.map((color, i) => (
         <ColorSwatch
           color={color.rgb.join(',')}
+          isSelected={selectedColor ? color._id === selectedColor._id : false}
+          onClick={() => setSelectedColor(colors[i])}
           key={color._id}
-          onClick={() => setSelectedColor(colors[0])}
         />
       ))}
     </div>
