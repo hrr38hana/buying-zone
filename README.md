@@ -26,8 +26,7 @@ making it yours with just the click of a button.
 
 Setting Buying Zone up for development is quick and easy!
 
-First, be sure to have
-[MongoDB](https://docs.mongodb.com/manual/installation/) (@ version 4+) and
+First, be sure to have [MongoDB](https://docs.mongodb.com/manual/installation/) (@ version 4+) and
 [Node.js](https://nodejs.org/en/download/) (@ version 9+) installed. Next, fork the repository, and
 on your development machine run the following commands.
 

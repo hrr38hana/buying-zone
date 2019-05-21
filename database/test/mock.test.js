@@ -8,9 +8,9 @@ const {
   randomReleaseDate,
   randomColors,
   mockColor,
-} = require('../mockUtils');
-
-const { mockProduct, seed } = require('../seed');
+  mockProduct,
+  seed,
+} = require('../mock/utils');
 
 describe('utility methods for mocking', () => {
   describe('random(ceil, floor)', () => {
