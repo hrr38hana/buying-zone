@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import styled, { createGlobalStyle } from 'styled-components';
+import ColorSwatch from './components/ColorSwatch';
 
 class BuyingZone extends Component {
   constructor() {
     super();
     this.state = {
       currentProduct: null,
-      id: 56,
+      currentColor: 0,
+      id: 52,
     };
   }
 
@@ -19,9 +21,10 @@ class BuyingZone extends Component {
   }
 
   render() {
-    const { currentProduct } = this.state;
+    const { currentProduct, currentColor } = this.state;
     const GlobalStyle = createGlobalStyle`
       body {
+        box-sizing: border-box;
         font-family: Helvetica, sans-serif;
       }
     `;
@@ -54,6 +57,9 @@ class BuyingZone extends Component {
         <p>
           {currentProduct ? currentProduct.description : 'Loading...'}
         </p>
+        <ColorSwatch
+          color={currentProduct ? currentProduct.colors[currentColor].rgb.join(',') : '0, 0, 0'}
+        />
       </div>
     );
   }
