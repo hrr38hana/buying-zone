@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 import ColorSelector from './components/ColorSelector';
+import NewProductBadge from './components/NewProductBadge';
 
 class BuyingZone extends Component {
   constructor() {
     super();
     this.state = {
       currentProduct: null,
-      id: 52,
+      id: Math.floor(Math.random() * 100) + 1,
     };
   }
 
@@ -29,6 +30,7 @@ class BuyingZone extends Component {
     `;
     const ProductName = styled.h1`
       font-weight: 900;
+      margin: 5px auto;
     `;
     const Price = styled.span`
       font-size: 1.2em;
@@ -43,6 +45,8 @@ class BuyingZone extends Component {
     return (
       <div>
         <GlobalStyle />
+        {currentProduct && (new Date() - new Date(currentProduct.releaseDate)) / 86400000
+        < 30 ? <NewProductBadge /> : ''}
         <ProductName>
           {currentProduct ? currentProduct.name : 'Loading...'}
         </ProductName>
