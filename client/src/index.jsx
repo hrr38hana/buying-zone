@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 import ColorSelector from './components/ColorSelector';
 import NewProductBadge from './components/NewProductBadge';
+import QuantitySelector from './components/QuantitySelector';
 
 class BuyingZone extends Component {
   constructor() {
@@ -26,6 +27,7 @@ class BuyingZone extends Component {
       body {
         box-sizing: border-box;
         font-family: Helvetica, sans-serif;
+        margin: 1.5em;
       }
     `;
     const ProductName = styled.h1`
@@ -65,6 +67,8 @@ class BuyingZone extends Component {
         <ColorSelector
           colors={currentProduct ? currentProduct.colors : []}
         />
+        <br />
+        <QuantitySelector />
       </div>
     );
   }
