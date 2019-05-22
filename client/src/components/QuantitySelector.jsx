@@ -9,7 +9,11 @@ const QuantityButton = styled.button`
   cursor: pointer;
 `;
 const Quantity = styled.span`
-  padding: 0 1em;
+  display: inline-block;
+  width: 2em;
+  text-align: center;
+  font-size: 0.85em;
+  font-weight: 200;
 `;
 
 const QuantitySelector = () => {
