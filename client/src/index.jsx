@@ -6,6 +6,7 @@ import NewProductBadge from './components/NewProductBadge';
 import QuantitySelector from './components/QuantitySelector';
 import SizeSelector from './components/SizeSelector';
 import AddToCartButton from './components/AddToCartButton';
+import ReviewsAverage from './components/ReviewsAverage';
 
 class BuyingZone extends Component {
   constructor() {
@@ -59,6 +60,7 @@ class BuyingZone extends Component {
         <ProductName>
           {currentProduct ? currentProduct.name : 'Loading...'}
         </ProductName>
+        <ReviewsAverage />
         <Price>
           {currentProduct ? `$${currentProduct.price}.00` : 'Loading...'}
         </Price>
