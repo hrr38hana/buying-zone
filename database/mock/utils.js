@@ -20,6 +20,15 @@ const randomProductDescription = () => {
   return description.trim();
 };
 
+const randomReviews = () => {
+  const reviews = [];
+  for (let i = 0; i < random(15); i++) {
+    reviews.push(random(5, 1));
+  }
+
+  return reviews;
+};
+
 const randomReleaseDate = () => new Date(2019, random(5, 1));
 
 const mockColor = () => {
@@ -51,9 +60,9 @@ const mockProduct = (id) => {
   product.name = randomProductName();
   product.description = randomProductDescription();
   product.price = random(250, 10);
-  product.colors = randomColors();
-  product.reviewAverage = random(5, 1);
+  product.reviews = randomReviews();
   product.releaseDate = randomReleaseDate();
+  product.colors = randomColors();
 
   return new Product(product);
 };
@@ -74,6 +83,7 @@ module.exports = {
   randomProductName,
   randomProductDescription,
   randomReleaseDate,
+  randomReviews,
   randomColors,
   mockColor,
   mockProduct,
