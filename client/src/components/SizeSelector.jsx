@@ -30,7 +30,7 @@ const SizeSelector = ({ sizes }) => (
     <div> Size </div>
     <SelectorWrapper>
       <Selector>
-        <option defaultValue disabled>
+        <option selected disabled>
           Please select
         </option>
         {sizes.map(size => (

@@ -5,6 +5,7 @@ import ColorSelector from './components/ColorSelector';
 import NewProductBadge from './components/NewProductBadge';
 import QuantitySelector from './components/QuantitySelector';
 import SizeSelector from './components/SizeSelector';
+import AddToCartButton from './components/AddToCartButton';
 
 class BuyingZone extends Component {
   constructor() {
@@ -27,7 +28,7 @@ class BuyingZone extends Component {
     const GlobalStyle = createGlobalStyle`
       body {
         box-sizing: border-box;
-        font-family: Avalon-Bold, Helvetica, sans-serif;
+        font-family: Roboto, Helvetica, sans-serif;
         margin: 0.75em;
       }
 
@@ -40,7 +41,7 @@ class BuyingZone extends Component {
       font-weight: 900;
       margin: 5px auto;
     `;
-    const Price = styled.span`
+    const Price = styled.div`
       font-size: 1.2em;
     `;
     const ModelNumber = styled.span`
@@ -54,14 +55,13 @@ class BuyingZone extends Component {
       <div>
         <GlobalStyle />
         {currentProduct && (new Date() - new Date(currentProduct.releaseDate)) / 86400000
-        < 30 ? <NewProductBadge /> : ''}
+          < 30 ? <NewProductBadge /> : ''}
         <ProductName>
           {currentProduct ? currentProduct.name : 'Loading...'}
         </ProductName>
         <Price>
           {currentProduct ? `$${currentProduct.price}.00` : 'Loading...'}
         </Price>
-        <br />
         <ModelNumber>
           {currentProduct ? `Model ${currentProduct.id}` : 'Loading...'}
         </ModelNumber>
@@ -79,6 +79,7 @@ class BuyingZone extends Component {
         />
         <br />
         <QuantitySelector />
+        <AddToCartButton />
       </div>
     );
   }
