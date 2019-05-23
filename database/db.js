@@ -8,7 +8,7 @@ const { Schema } = mongoose;
 const colorSchema = new Schema({
   name: String,
   finish: String,
-  rgb: [Number],
+  rgb: String,
   quantityInInventory: Map,
   of: String,
 });

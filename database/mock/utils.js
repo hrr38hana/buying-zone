@@ -27,7 +27,7 @@ const mockColor = () => {
 
   color.name = selectRandomFrom(mockData.colorNames);
   color.finish = selectRandomFrom(mockData.colorFinishes);
-  color.rgb = [random(255), random(255), random(255)];
+  color.rgb = `rgb(${random(255)},${random(255)},${random(255)})`;
   color.quantityInInventory = {};
   mockData.sizes.forEach((size) => {
     color.quantityInInventory[size] = random(5);
@@ -38,7 +38,7 @@ const mockColor = () => {
 
 const randomColors = () => {
   const colors = [];
-  for (let i = 0; i < random(5, 1); i++) {
+  for (let i = 0; i < random(6, 1); i++) {
     colors.push(mockColor());
   }
 
