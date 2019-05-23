@@ -140,7 +140,7 @@ describe('mock data creation methods', () => {
       expect(typeof color.finish).toBe('string');
 
       check(color, 'rgb');
-      expect(Array.isArray(color.rgb)).toBe(true);
+      expect(typeof color.rgb).toBe('string');
 
       check(color, 'quantityInInventory');
       expect(typeof color.quantityInInventory).toBe('object');
