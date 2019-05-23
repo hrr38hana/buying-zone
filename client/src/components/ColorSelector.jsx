@@ -17,7 +17,7 @@ const ColorSelector = ({ colors }) => {
   }, [selectedColor, colors]);
 
   return (
-    <div>
+    <div style={{ marginTop: '1.5em' }}>
       <div>
         {'Color / '}
         <ColorDetail>
@@ -31,7 +31,7 @@ const ColorSelector = ({ colors }) => {
       <br />
       {colors.map(color => (
         <ColorSwatch
-          color={color.rgb.join(',')}
+          color={color.rgb}
           isSelected={selectedColor ? color._id === selectedColor._id : false}
           onClick={() => setSelectedColor(color)}
           key={color._id}

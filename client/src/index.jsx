@@ -71,7 +71,6 @@ class BuyingZone extends Component {
         <p>
           {currentProduct ? currentProduct.description : 'Loading...'}
         </p>
-        <br />
         <ColorSelector
           colors={currentProduct ? currentProduct.colors : []}
         />

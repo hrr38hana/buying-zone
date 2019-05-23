@@ -19,7 +19,7 @@ const ColorSwatch = ({ color, isSelected, onClick }) => {
     height: 19px;
     width: 19px;
     border-radius: 50%;
-    background: rgb(${color});
+    background: ${color};
     display: inline-block;
     cursor: pointer;
   `;
