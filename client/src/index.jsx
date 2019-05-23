@@ -4,6 +4,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import ColorSelector from './components/ColorSelector';
 import NewProductBadge from './components/NewProductBadge';
 import QuantitySelector from './components/QuantitySelector';
+import SizeSelector from './components/SizeSelector';
 
 class BuyingZone extends Component {
   constructor() {
@@ -26,11 +27,16 @@ class BuyingZone extends Component {
     const GlobalStyle = createGlobalStyle`
       body {
         box-sizing: border-box;
-        font-family: Helvetica, sans-serif;
-        margin: 1.5em;
+        font-family: Avalon-Bold, Helvetica, sans-serif;
+        margin: 0.75em;
+      }
+
+      *:focus {
+        outline: none;
       }
     `;
     const ProductName = styled.h1`
+      font-size: 24px;
       font-weight: 900;
       margin: 5px auto;
     `;
@@ -66,6 +72,10 @@ class BuyingZone extends Component {
         <br />
         <ColorSelector
           colors={currentProduct ? currentProduct.colors : []}
+        />
+        <br />
+        <SizeSelector
+          sizes={currentProduct ? Object.keys(currentProduct.colors[0].quantityInInventory) : []}
         />
         <br />
         <QuantitySelector />
