@@ -19,9 +19,9 @@ const Selector = styled.select`
   display: inline-block;
 `;
 const Arrow = styled.span`
-  color: rgb(50, 50, 50);
+  color: rgb(100, 100, 100);
   margin-left: -1em;
-  line-height: 1em;
+  font-size: 13px;
   pointer-events: none;
 `;
 
@@ -29,8 +29,8 @@ const SizeSelector = ({ sizes }) => (
   <div>
     <div> Size </div>
     <SelectorWrapper>
-      <Selector>
-        <option selected disabled>
+      <Selector defaultValue="placeholder">
+        <option value="placeholder" disabled>
           Please select
         </option>
         {sizes.map(size => (
@@ -39,7 +39,7 @@ const SizeSelector = ({ sizes }) => (
           </option>
         ))}
       </Selector>
-      <Arrow> ⌄ </Arrow>
+      <Arrow className="fas fa-chevron-down" />
     </SelectorWrapper>
   </div>
 );
