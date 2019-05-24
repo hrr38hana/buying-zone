@@ -19,7 +19,7 @@ const productSchema = new Schema({
   description: String,
   price: Number,
   colors: [colorSchema],
-  reviewAverage: Number,
+  reviews: [Number],
   releaseDate: Date,
 });
 

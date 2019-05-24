@@ -5,6 +5,7 @@ const {
   selectRandomFrom,
   randomProductName,
   randomProductDescription,
+  randomReviews,
   randomReleaseDate,
   randomColors,
   mockColor,
@@ -94,6 +95,20 @@ describe('utility methods for mocking', () => {
     });
   });
 
+  describe('randomReviews()', () => {
+    test('should return an array', () => {
+      expect(Array.isArray(randomReviews())).toBe(true);
+    });
+
+    test('should return an array of numbers between 1–5', () => {
+      randomReviews().forEach((review) => {
+        expect(typeof review).toBe('number');
+        expect(review).toBeGreaterThanOrEqual(1);
+        expect(review).toBeLessThanOrEqual(5);
+      });
+    });
+  });
+
   describe('randomReleaseDate()', () => {
     test('should return a date', () => {
       expect(randomReleaseDate() instanceof Date).toBe(true);
@@ -163,8 +178,8 @@ describe('mock data creation methods', () => {
       check(product, 'releaseDate');
       expect(product.releaseDate instanceof Date).toBe(true);
 
-      check(product, 'reviewAverage');
-      expect(typeof product.reviewAverage).toBe('number');
+      check(product, 'reviews');
+      expect(Array.isArray(product.reviews)).toBe(true);
 
       check(product, 'price');
       expect(typeof product.price).toBe('number');
