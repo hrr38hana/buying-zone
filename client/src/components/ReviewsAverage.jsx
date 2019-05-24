@@ -24,6 +24,15 @@ const StarSquare = styled.div`
   line-height: 1em;
 `;
 
+function* generateKey() {
+  let key = 0;
+  while (true) {
+    yield key += 1;
+  }
+}
+
+const key = generateKey();
+
 const ReviewsAverage = ({ reviews }) => {
   let average = reviews.length
     ? (reviews.reduce((acc, rev) => acc + rev) / reviews.length).toFixed(1) : 0;
@@ -47,7 +56,7 @@ const ReviewsAverage = ({ reviews }) => {
         <StarSquare
           style={{ gridColumn: `${i + 1} / span 1` }}
           fill={fill}
-          key={i}
+          key={key.next().value}
         >
           ⭑
         </StarSquare>

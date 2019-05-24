@@ -20,7 +20,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "@babel/polyfill": "^7.4.4",
     "express": "^4.16.4",
     "mongoose": "^5.5.8",
     "prop-types": "^15.7.2",

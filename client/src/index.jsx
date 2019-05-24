@@ -1,6 +1,10 @@
+import '@babel/polyfill';
+
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+
 import styled, { createGlobalStyle } from 'styled-components';
+
 import ColorSelector from './components/ColorSelector';
 import NewProductBadge from './components/NewProductBadge';
 import QuantitySelector from './components/QuantitySelector';
@@ -17,11 +21,11 @@ class BuyingZone extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { id } = this.state;
-    fetch(`/products/${id}`)
-      .then(response => response.json())
-      .then(currentProduct => this.setState({ currentProduct }));
+    const response = await fetch(`/products/${id}`);
+    const currentProduct = await response.json();
+    this.setState({ currentProduct });
   }
 
   render() {

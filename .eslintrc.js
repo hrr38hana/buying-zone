@@ -31,6 +31,5 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
-    'react/no-array-index-key': 'off',
   },
 };
