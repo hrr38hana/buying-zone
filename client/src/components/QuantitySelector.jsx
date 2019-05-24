@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const QuantityButton = styled.button`
   border: none;
-  background-color: inherit;
   padding: 0;
+  background-color: inherit;
   font-size: 1.5em;
   cursor: pointer;
 `;

@@ -25,12 +25,9 @@ class BuyingZone extends Component {
   }
 
   render() {
-    const { currentProduct } = this.state;
-
     const ProductName = styled.h1`
       font-size: 24px;
       font-weight: 900;
-      margin: 5px auto;
     `;
     const Price = styled.div`
       font-size: 1.2em;
@@ -41,6 +38,8 @@ class BuyingZone extends Component {
       font-size: 0.8em;
       font-weight: 700;
     `;
+
+    const { currentProduct } = this.state;
 
     return (
       <div>
@@ -56,14 +55,10 @@ class BuyingZone extends Component {
         <ModelNumber>
           {currentProduct ? `Model ${currentProduct.id}` : 'Loading...'}
         </ModelNumber>
-        <br />
         <p>
           {currentProduct ? currentProduct.description : 'Loading...'}
         </p>
-        <ColorSelector
-          colors={currentProduct ? currentProduct.colors : []}
-        />
-        <br />
+        <ColorSelector colors={currentProduct ? currentProduct.colors : []} />
         <SizeSelector
           sizes={currentProduct ? Object.keys(currentProduct.colors[0].quantityInInventory) : []}
         />

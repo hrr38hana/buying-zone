@@ -17,7 +17,7 @@ const ColorSelector = ({ colors }) => {
   }, [selectedColor, colors]);
 
   return (
-    <div style={{ marginTop: '1.5em' }}>
+    <div>
       <div>
         {'Color / '}
         <ColorDetail>

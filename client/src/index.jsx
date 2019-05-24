@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: Roboto, Helvetica, sans-serif;
     margin: 0.75em;
+    margin-top: 1.5em;
   }
 
   *:focus {

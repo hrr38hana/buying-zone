@@ -8,19 +8,19 @@ const SelectorWrapper = styled.div`
   font-size: 32px;
 `;
 const Selector = styled.select`
+  -webkit-appearance: none;
+  display: inline-block;
   width: 100%;
+  margin-right: -2%;
   border: none;
   border-radius: 0;
   padding: 1.1em;
-  margin-right: -2%;
   font-size: 13px;
   font-weight: 100;
-  -webkit-appearance: none;
-  display: inline-block;
 `;
 const Arrow = styled.span`
-  color: rgb(100, 100, 100);
   margin-left: -1em;
+  color: rgb(100, 100, 100);
   font-size: 13px;
   pointer-events: none;
 `;
@@ -30,9 +30,7 @@ const SizeSelector = ({ sizes }) => (
     <div> Size </div>
     <SelectorWrapper>
       <Selector defaultValue="placeholder">
-        <option value="placeholder" disabled>
-          Please select
-        </option>
+        <option value="placeholder" disabled> Please select </option>
         {sizes.map(size => (
           <option key={size}>
             {size}
