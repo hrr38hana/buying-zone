@@ -60,7 +60,7 @@ class BuyingZone extends Component {
         <ProductName>
           {currentProduct ? currentProduct.name : 'Loading...'}
         </ProductName>
-        <ReviewsAverage />
+        <ReviewsAverage reviews={currentProduct ? currentProduct.reviews : []} />
         <Price>
           {currentProduct ? `$${currentProduct.price}.00` : 'Loading...'}
         </Price>
