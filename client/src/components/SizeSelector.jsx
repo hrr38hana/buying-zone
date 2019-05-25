@@ -7,20 +7,20 @@ const SelectorWrapper = styled.div`
   border: 1px solid rgb(143, 143, 143);
   font-size: 32px;
 `;
-const Selector = styled.select`
+const Select = styled.select`
+  -webkit-appearance: none;
+  display: inline-block;
   width: 100%;
+  margin-right: -2%;
   border: none;
   border-radius: 0;
   padding: 1.1em;
-  margin-right: -2%;
   font-size: 13px;
   font-weight: 100;
-  -webkit-appearance: none;
-  display: inline-block;
 `;
 const Arrow = styled.span`
-  color: rgb(100, 100, 100);
   margin-left: -1em;
+  color: rgb(100, 100, 100);
   font-size: 13px;
   pointer-events: none;
 `;
@@ -29,16 +29,14 @@ const SizeSelector = ({ sizes }) => (
   <div>
     <div> Size </div>
     <SelectorWrapper>
-      <Selector defaultValue="placeholder">
-        <option value="placeholder" disabled>
-          Please select
-        </option>
+      <Select defaultValue="placeholder">
+        <option value="placeholder" disabled> Please select </option>
         {sizes.map(size => (
           <option key={size}>
             {size}
           </option>
         ))}
-      </Selector>
+      </Select>
       <Arrow className="fas fa-chevron-down" />
     </SelectorWrapper>
   </div>

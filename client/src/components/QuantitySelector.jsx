@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const QuantityButton = styled.button`
   border: none;
-  background-color: inherit;
   padding: 0;
+  background-color: inherit;
   font-size: 1.5em;
   cursor: pointer;
 `;
@@ -17,19 +17,21 @@ const Quantity = styled.span`
 `;
 
 const QuantitySelector = () => {
-  const [quantityPurchased, setQuantityPurchased] = useState(1);
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <div>
       Quantity
       <br />
-      <QuantityButton
-        onClick={() => setQuantityPurchased(quantityPurchased === 1 ? 1 : quantityPurchased - 1)}
-      >
+      <QuantityButton onClick={() => setQuantity(quantity === 1 ? 1 : quantity - 1)}>
         –
       </QuantityButton>
-      <Quantity>{quantityPurchased}</Quantity>
-      <QuantityButton onClick={() => setQuantityPurchased(quantityPurchased + 1)}>+</QuantityButton>
+      <Quantity>
+        {quantity}
+      </Quantity>
+      <QuantityButton onClick={() => setQuantity(quantity + 1)}>
+        +
+      </QuantityButton>
     </div>
   );
 };

@@ -10,18 +10,18 @@ const ReviewsGrid = styled.div`
   cursor: default;
 `;
 const StarSquare = styled.div`
+  width: 1em;
+  border-radius: 0.1em;
+  padding: 0.1em;
   background:
     linear-gradient(
       to right,
       rgb(65,185,61) ${props => `${props.fill * 100}%`},
       rgb(242,242,242) ${props => `${props.fill * 100}%`}
     );
-  color: rgb(255, 255, 255);
   text-align: center;
-  width: 1em;
-  padding: 0.1em;
-  border-radius: 0.1em;
   line-height: 1em;
+  color: rgb(255, 255, 255);
 `;
 
 function* generateKey() {
@@ -63,7 +63,11 @@ const ReviewsAverage = ({ reviews }) => {
       ))}
       <span />
       <span style={{ fontSize: '13px' }}>
-        {`${reviews.length ? reviews.length : 'No'} reviews / Write a review`}
+        {
+          `${reviews.length
+            ? reviews.length : 'No'} review${reviews.length === 1
+            ? '' : 's'} / Write a review`
+        }
       </span>
     </ReviewsGrid>
   );

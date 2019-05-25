@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ColorSwatch from './ColorSwatch';
 
-const ColorSelector = ({ colors }) => {
-  const ColorDetail = styled.span`
-    color: rgb(143, 143, 143);
-    font-style: italic;
-  `;
+const ColorDetail = styled.span`
+  color: rgb(143, 143, 143);
+  font-style: italic;
+`;
 
+const ColorSelector = ({ colors }) => {
   const [selectedColor, setSelectedColor] = useState(null);
   useEffect(() => {
     if (!selectedColor) {
@@ -17,7 +17,7 @@ const ColorSelector = ({ colors }) => {
   }, [selectedColor, colors]);
 
   return (
-    <div style={{ marginTop: '1.5em' }}>
+    <div>
       <div>
         {'Color / '}
         <ColorDetail>
@@ -28,7 +28,6 @@ const ColorSelector = ({ colors }) => {
           {selectedColor ? selectedColor.finish : ''}
         </ColorDetail>
       </div>
-      <br />
       {colors.map(color => (
         <ColorSwatch
           color={color.rgb}
