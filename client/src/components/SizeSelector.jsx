@@ -7,7 +7,7 @@ const SelectorWrapper = styled.div`
   border: 1px solid rgb(143, 143, 143);
   font-size: 32px;
 `;
-const Selector = styled.select`
+const Select = styled.select`
   -webkit-appearance: none;
   display: inline-block;
   width: 100%;
@@ -29,14 +29,14 @@ const SizeSelector = ({ sizes }) => (
   <div>
     <div> Size </div>
     <SelectorWrapper>
-      <Selector defaultValue="placeholder">
+      <Select defaultValue="placeholder">
         <option value="placeholder" disabled> Please select </option>
         {sizes.map(size => (
           <option key={size}>
             {size}
           </option>
         ))}
-      </Selector>
+      </Select>
       <Arrow className="fas fa-chevron-down" />
     </SelectorWrapper>
   </div>

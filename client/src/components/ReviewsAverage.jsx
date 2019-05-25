@@ -63,7 +63,11 @@ const ReviewsAverage = ({ reviews }) => {
       ))}
       <span />
       <span style={{ fontSize: '13px' }}>
-        {`${reviews.length ? reviews.length : 'No'} reviews / Write a review`}
+        {
+          `${reviews.length
+            ? reviews.length : 'No'} review${reviews.length === 1
+            ? '' : 's'} / Write a review`
+        }
       </span>
     </ReviewsGrid>
   );

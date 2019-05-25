@@ -8,10 +8,12 @@ const Button = styled.button`
   border: none;
   padding: 1.1em;
   background-color: rgb(0, 136, 202);
+  background-color: rgb(192, 226, 242);
   color: rgb(255, 255, 255);
   font-size: 0.8em;
   :hover {
     background-color: rgb(0, 156, 233);
+    cursor: pointer;
   }
 `;
 const Icon = styled.span`
@@ -19,12 +21,10 @@ const Icon = styled.span`
 `;
 
 const AddToCartButton = () => (
-  <div>
-    <Button>
-      <Icon className="fas fa-shopping-cart" />
-      Add to cart
-    </Button>
-  </div>
+  <Button>
+    <Icon className="fas fa-shopping-cart" />
+    Add to cart
+  </Button>
 );
 
 export default AddToCartButton;
