@@ -36,14 +36,14 @@ app.get('/products/:id', async (req, res) => {
  */
 app.put('/products/:id', async (req, res) => {
   const { id } = req.params;
-  const { colorId, size, quantityPurchased } = req.body;
+  const { colorId, size, quantity } = req.body;
   try {
     const product = await Product.findOne({ id });
     const color = await product.colors.id(colorId);
     const quantityInInventory = color.quantityInInventory.get(size);
-    color.quantityInInventory.set(size, quantityInInventory - quantityPurchased);
+    color.quantityInInventory.set(size, quantityInInventory - quantity);
     await product.save();
-    res.sendStatus(200);
+    res.json(product);
   } catch (err) {
     // TODO: improve error handling
     res.sendStatus(400);

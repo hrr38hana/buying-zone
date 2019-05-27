@@ -7,7 +7,7 @@ import ReviewsAverage from './ReviewsAverage';
 import ColorSelector from '../redux/containers/ColorSelectorContainer';
 import SizeSelector from '../redux/containers/SizeSelectorContainer';
 import QuantitySelector from '../redux/containers/QuantitySelectorContainer';
-import AddToCartButton from './AddToCartButton';
+import AddToCartButton from '../redux/containers/AddToCartButtonContainer';
 
 const ProductName = styled.h1`
   font-size: 24px;
@@ -24,10 +24,35 @@ const ModelNumber = styled.span`
 `;
 
 class BuyingZone extends Component {
+  constructor(props) {
+    super(props);
+    this.handlePurchase = this.handlePurchase.bind(this);
+  }
+
   async componentDidMount() {
     const { setProduct } = this.props;
     const id = 4;
     const response = await fetch(`/products/${id}`);
+    const product = await response.json();
+    product.sizes = Object.keys(product.colors[0].quantityInInventory);
+    setProduct(product);
+  }
+
+  async handlePurchase() {
+    const {
+      product: { id },
+      setProduct,
+      color,
+      size,
+      quantity,
+    } = this.props;
+    const response = await fetch(`/products/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ colorId: color._id, size, quantity }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
     const product = await response.json();
     product.sizes = Object.keys(product.colors[0].quantityInInventory);
     setProduct(product);
@@ -66,7 +91,7 @@ class BuyingZone extends Component {
         <SizeSelector sizes={product ? product.sizes : []} />
         <br />
         <QuantitySelector />
-        <AddToCartButton />
+        <AddToCartButton onClick={this.handlePurchase} />
       </div>
     );
   }
@@ -75,6 +100,9 @@ class BuyingZone extends Component {
 BuyingZone.propTypes = {
   product: PropTypes.object,
   setProduct: PropTypes.func.isRequired,
+  color: PropTypes.object,
+  size: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired,
 };
 
 export default BuyingZone;
