@@ -25,11 +25,11 @@ const Arrow = styled.span`
   pointer-events: none;
 `;
 
-const SizeSelector = ({ sizes }) => (
+const SizeSelector = ({ sizes, setSelectedSize }) => (
   <div>
     <div> Size </div>
     <SelectorWrapper>
-      <Select defaultValue="placeholder">
+      <Select defaultValue="placeholder" onChange={e => setSelectedSize(e.target.value)}>
         <option value="placeholder" disabled> Please select </option>
         {sizes.map(size => (
           <option key={size}>
@@ -44,6 +44,7 @@ const SizeSelector = ({ sizes }) => (
 
 SizeSelector.propTypes = {
   sizes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  setSelectedSize: PropTypes.func.isRequired,
 };
 
 export default SizeSelector;

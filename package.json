@@ -26,6 +26,9 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-redux": "^7.0.3",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
@@ -48,6 +51,8 @@
     "jest-puppeteer": "^4.1.1",
     "jest-styled-components": "^6.3.1",
     "puppeteer": "^1.16.0",
+    "redux-devtools-cli": "0.0.1-1",
+    "remote-redux-devtools": "^0.5.16",
     "superagent": "^5.0.5",
     "supertest": "^4.0.2",
     "webpack": "^4.31.0",

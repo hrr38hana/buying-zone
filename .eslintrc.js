@@ -31,5 +31,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+    'react/forbid-prop-types': 'off',
+    'react/require-default-props': 'off',
   },
 };
