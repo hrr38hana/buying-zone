@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import NewProductBadge from './NewProductBadge';
 import ReviewsAverage from './ReviewsAverage';
-import ColorSelector from './ColorSelector';
-import SizeSelector from './SizeSelector';
-import QuantitySelector from './QuantitySelector';
+import ColorSelector from '../redux/containers/ColorSelectorContainer';
+import SizeSelector from '../redux/containers/SizeSelectorContainer';
+import QuantitySelector from '../redux/containers/QuantitySelectorContainer';
 import AddToCartButton from './AddToCartButton';
 
 const ProductName = styled.h1`
@@ -23,53 +24,51 @@ const ModelNumber = styled.span`
 `;
 
 class BuyingZone extends Component {
-  constructor() {
-    super();
-    this.state = {
-      currentProduct: null,
-      id: Math.floor(Math.random() * 100) + 1,
-    };
-  }
-
   async componentDidMount() {
-    const { id } = this.state;
+    const { setProduct } = this.props;
+    const id = 4;
     const response = await fetch(`/products/${id}`);
-    const currentProduct = await response.json();
-    currentProduct.sizes = Object.keys(currentProduct.colors[0].quantityInInventory);
-    this.setState({ currentProduct });
+    const product = await response.json();
+    product.sizes = Object.keys(product.colors[0].quantityInInventory);
+    setProduct(product);
   }
 
   _compareReleaseDate() {
-    const { currentProduct } = this.state;
-    return currentProduct && (new Date() - new Date(currentProduct.releaseDate)) / 86400000 < 30;
+    const { product } = this;
+    return product && (new Date() - new Date(product.releaseDate)) / 86400000 < 30;
   }
 
   render() {
-    const { currentProduct } = this.state;
+    const { product } = this.props;
 
     return (
       <div>
         {this._compareReleaseDate() ? <NewProductBadge /> : ''}
         <ProductName>
-          {currentProduct ? currentProduct.name : 'Loading...'}
+          {product ? product.name : 'Loading...'}
         </ProductName>
-        <ReviewsAverage reviews={currentProduct ? currentProduct.reviews : []} />
+        <ReviewsAverage reviews={product ? product.reviews : []} />
         <Price>
-          {currentProduct ? `$${currentProduct.price.toFixed(2)}` : 'Loading...'}
+          {product ? `$${product.price.toFixed(2)}` : 'Loading...'}
         </Price>
         <ModelNumber>
-          {currentProduct ? `Model ${currentProduct.id}` : 'Loading...'}
+          {product ? `Model ${product.id}` : 'Loading...'}
         </ModelNumber>
         <p>
-          {currentProduct ? currentProduct.description : 'Loading...'}
+          {product ? product.description : 'Loading...'}
         </p>
-        <ColorSelector colors={currentProduct ? currentProduct.colors : []} />
-        <SizeSelector sizes={currentProduct ? currentProduct.sizes : []} />
+        <ColorSelector colors={product ? product.colors : []} />
+        <SizeSelector sizes={product ? product.sizes : []} />
         <QuantitySelector />
         <AddToCartButton />
       </div>
     );
   }
 }
+
+BuyingZone.propTypes = {
+  product: PropTypes.object,
+  setProduct: PropTypes.func.isRequired,
+};
 
 export default BuyingZone;

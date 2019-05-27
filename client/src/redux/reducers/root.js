@@ -6,8 +6,8 @@ import changeSize from './size';
 import changeQuantity from './quantity';
 
 export default combineReducers({
-  changeProduct,
-  changeColor,
-  changeSize,
-  changeQuantity,
+  product: changeProduct,
+  color: changeColor,
+  size: changeSize,
+  quantity: changeQuantity,
 });

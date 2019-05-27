@@ -1,9 +1,9 @@
-import { connect } from 'redux';
+import { connect } from 'react-redux';
 import changeColor from '../actions/color';
 import ColorSelector from '../../components/ColorSelector';
 
 const mapStateToProps = state => ({
-  color: state.color,
+  selectedColor: state.color,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,4 +1,4 @@
-import { connect } from 'redux';
+import { connect } from 'react-redux';
 import changeSize from '../actions/size';
 import SizeSelector from '../../components/SizeSelector';
 
@@ -8,4 +8,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(() => { }, mapDispatchToProps)(SizeSelector);
+export default connect(() => ({}), mapDispatchToProps)(SizeSelector);
