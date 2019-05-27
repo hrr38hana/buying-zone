@@ -59,11 +59,17 @@ class BuyingZone extends Component {
       },
     });
     const product = await response.json();
+    product.sizes = Object.keys(product.colors[0].quantityInInventory);
     setProduct(product);
   }
 
   render() {
-    const { product } = this.props;
+    const {
+      product,
+      color,
+      size,
+      quantity,
+    } = this.props;
 
     return (
       <div>
@@ -87,10 +93,20 @@ class BuyingZone extends Component {
         <br />
         <ColorSelector colors={product ? product.colors : []} />
         <br />
-        <SizeSelector sizes={product ? product.sizes : []} />
+        <SizeSelector
+          color={color}
+          size={size}
+          quantity={quantity}
+          sizes={product ? product.sizes : []}
+        />
         <br />
         <QuantitySelector />
-        <AddToCartButton onClick={this.handlePurchase} />
+        <AddToCartButton
+          color={color}
+          size={size}
+          quantity={quantity}
+          onClick={this.handlePurchase}
+        />
       </div>
     );
   }

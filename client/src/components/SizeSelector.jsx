@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const SelectorWrapper = styled.div`
-  margin-top: 0.5em;
+  margin-top: 0.1em;
   border: 1px solid rgb(143, 143, 143);
   font-size: 32px;
 `;
@@ -25,9 +25,33 @@ const Arrow = styled.span`
   pointer-events: none;
 `;
 
-const SizeSelector = ({ sizes, setSelectedSize }) => (
+const SizeSelector = ({
+  color,
+  size: selectedSize,
+  quantity,
+  sizes,
+  setSelectedSize,
+}) => (
   <div>
-    <div> Size </div>
+    <div>
+      Size
+      {(() => {
+        if (selectedSize && color.quantityInInventory[selectedSize] - quantity > 0) {
+          return (
+            <span style={{ float: 'right', color: 'rgb(65,185,61)', fontSize: '12px' }}>
+              In stock
+            </span>
+          );
+        } else if (selectedSize) {
+          return (
+            <span style={{ float: 'right', color: 'rgb(208,26,42)', fontSize: '12px' }}>
+              Coming soon
+            </span>
+          );
+        }
+        return ('');
+      })()}
+    </div>
     <SelectorWrapper>
       <Select defaultValue="placeholder" onChange={e => setSelectedSize(e.target.value)}>
         <option value="placeholder" disabled> Please select </option>
@@ -43,6 +67,9 @@ const SizeSelector = ({ sizes, setSelectedSize }) => (
 );
 
 SizeSelector.propTypes = {
+  color: PropTypes.object,
+  size: PropTypes.string,
+  quantity: PropTypes.number,
   sizes: PropTypes.arrayOf(PropTypes.string).isRequired,
   setSelectedSize: PropTypes.func.isRequired,
 };

@@ -29,6 +29,7 @@ module.exports = {
   rules: {
     'no-plusplus': ['error', { "allowForLoopAfterthoughts": true } ],
     'no-underscore-dangle': 'off',
+    'no-else-return': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/forbid-prop-types': 'off',
