@@ -48,17 +48,23 @@ class BuyingZone extends Component {
           {product ? product.name : 'Loading...'}
         </ProductName>
         <ReviewsAverage reviews={product ? product.reviews : []} />
+        <br />
+        <br />
         <Price>
           {product ? `$${product.price.toFixed(2)}` : 'Loading...'}
         </Price>
         <ModelNumber>
           {product ? `Model ${product.id}` : 'Loading...'}
         </ModelNumber>
+        <br />
         <p>
           {product ? product.description : 'Loading...'}
         </p>
+        <br />
         <ColorSelector colors={product ? product.colors : []} />
+        <br />
         <SizeSelector sizes={product ? product.sizes : []} />
+        <br />
         <QuantitySelector />
         <AddToCartButton />
       </div>

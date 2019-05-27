@@ -7,11 +7,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  incrementQuantity: () => {
+  increment: () => {
     dispatch(increment());
   },
 
-  decrementQuantity: () => {
+  decrement: () => {
     dispatch(decrement());
   },
 });

@@ -20,6 +20,7 @@ const ColorSelector = ({ colors, selectedColor, setSelectedColor }) => (
         {selectedColor ? selectedColor.finish : ''}
       </ColorDetail>
     </div>
+    <br />
     {colors.map(color => (
       <ColorSwatch
         color={color.rgb}

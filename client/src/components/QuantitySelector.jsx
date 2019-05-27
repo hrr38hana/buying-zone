@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const QuantityButton = styled.button`
@@ -16,24 +17,26 @@ const Quantity = styled.span`
   font-weight: 200;
 `;
 
-const QuantitySelector = () => {
-  const [quantity, setQuantity] = useState(1);
+const QuantitySelector = ({ quantity, increment, decrement }) => (
+  <div>
+    Quantity
+    <br />
+    <QuantityButton onClick={() => decrement()}>
+      –
+    </QuantityButton>
+    <Quantity>
+      {quantity}
+    </Quantity>
+    <QuantityButton onClick={() => increment()}>
+      +
+    </QuantityButton>
+  </div>
+);
 
-  return (
-    <div>
-      Quantity
-      <br />
-      <QuantityButton onClick={() => setQuantity(quantity === 1 ? 1 : quantity - 1)}>
-        –
-      </QuantityButton>
-      <Quantity>
-        {quantity}
-      </Quantity>
-      <QuantityButton onClick={() => setQuantity(quantity + 1)}>
-        +
-      </QuantityButton>
-    </div>
-  );
+QuantitySelector.propTypes = {
+  quantity: PropTypes.number.isRequired,
+  increment: PropTypes.func.isRequired,
+  decrement: PropTypes.func.isRequired,
 };
 
 export default QuantitySelector;
