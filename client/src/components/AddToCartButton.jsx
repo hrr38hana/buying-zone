@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Button = styled.button`
@@ -20,11 +21,15 @@ const Icon = styled.span`
   margin-right: 1em;
 `;
 
-const AddToCartButton = () => (
-  <Button>
+const AddToCartButton = ({ onClick }) => (
+  <Button onClick={onClick}>
     <Icon className="fas fa-shopping-cart" />
     Add to cart
   </Button>
 );
+
+AddToCartButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default AddToCartButton;

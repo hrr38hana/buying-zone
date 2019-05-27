@@ -24,6 +24,11 @@ const ModelNumber = styled.span`
 `;
 
 class BuyingZone extends Component {
+  constructor(props) {
+    super(props);
+    this.handlePurchase = this.handlePurchase.bind(this);
+  }
+
   async componentDidMount() {
     const { setProduct } = this.props;
     const id = 4;
@@ -36,6 +41,25 @@ class BuyingZone extends Component {
   _compareReleaseDate() {
     const { product } = this;
     return product && (new Date() - new Date(product.releaseDate)) / 86400000 < 30;
+  }
+
+  async handlePurchase() {
+    const {
+      product: { id },
+      setProduct,
+      color,
+      size,
+      quantity,
+    } = this.props;
+    const response = await fetch(`/products/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ colorId: color._id, size, quantity }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const product = await response.json();
+    setProduct(product);
   }
 
   render() {
@@ -66,7 +90,7 @@ class BuyingZone extends Component {
         <SizeSelector sizes={product ? product.sizes : []} />
         <br />
         <QuantitySelector />
-        <AddToCartButton />
+        <AddToCartButton onClick={this.handlePurchase} />
       </div>
     );
   }
@@ -75,6 +99,9 @@ class BuyingZone extends Component {
 BuyingZone.propTypes = {
   product: PropTypes.object,
   setProduct: PropTypes.func.isRequired,
+  color: PropTypes.object,
+  size: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired,
 };
 
 export default BuyingZone;

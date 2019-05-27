@@ -5,6 +5,9 @@ import BuyingZone from '../../components/BuyingZone';
 
 const mapStateToProps = state => ({
   product: state.product,
+  color: state.color,
+  size: state.size,
+  quantity: state.quantity,
 });
 
 const mapDispatchToProps = dispatch => ({
