@@ -7,7 +7,7 @@ import ReviewsAverage from './ReviewsAverage';
 import ColorSelector from '../redux/containers/ColorSelectorContainer';
 import SizeSelector from '../redux/containers/SizeSelectorContainer';
 import QuantitySelector from '../redux/containers/QuantitySelectorContainer';
-import AddToCartButton from './AddToCartButton';
+import AddToCartButton from '../redux/containers/AddToCartButtonContainer';
 
 const ProductName = styled.h1`
   font-size: 24px;
@@ -38,11 +38,6 @@ class BuyingZone extends Component {
     setProduct(product);
   }
 
-  _compareReleaseDate() {
-    const { product } = this;
-    return product && (new Date() - new Date(product.releaseDate)) / 86400000 < 30;
-  }
-
   async handlePurchase() {
     const {
       product: { id },
@@ -63,13 +58,13 @@ class BuyingZone extends Component {
     setProduct(product);
   }
 
+  _compareReleaseDate() {
+    const { product } = this;
+    return product && (new Date() - new Date(product.releaseDate)) / 86400000 < 30;
+  }
+
   render() {
-    const {
-      product,
-      color,
-      size,
-      quantity,
-    } = this.props;
+    const { product } = this.props;
 
     return (
       <div>
@@ -93,20 +88,10 @@ class BuyingZone extends Component {
         <br />
         <ColorSelector colors={product ? product.colors : []} />
         <br />
-        <SizeSelector
-          color={color}
-          size={size}
-          quantity={quantity}
-          sizes={product ? product.sizes : []}
-        />
+        <SizeSelector sizes={product ? product.sizes : []} />
         <br />
         <QuantitySelector />
-        <AddToCartButton
-          color={color}
-          size={size}
-          quantity={quantity}
-          onClick={this.handlePurchase}
-        />
+        <AddToCartButton onClick={this.handlePurchase} />
       </div>
     );
   }
