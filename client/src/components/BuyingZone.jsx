@@ -27,13 +27,7 @@ class BuyingZone extends Component {
   constructor(props) {
     super(props);
     this.handlePurchase = this.handlePurchase.bind(this);
-  }
-
-  async componentDidMount() {
-    const { setProduct } = this.props;
-    const id = 4;
-    const response = await fetch(`/products/${id}`);
-    const product = await response.json();
+    const { product, setProduct } = this.props;
     product.sizes = Object.keys(product.colors[0].quantityInInventory);
     setProduct(product);
   }
@@ -88,7 +82,7 @@ class BuyingZone extends Component {
         <br />
         <ColorSelector colors={product ? product.colors : []} />
         <br />
-        <SizeSelector sizes={product ? product.sizes : []} />
+        <SizeSelector sizes={product ? product.sizes || [] : []} />
         <br />
         <QuantitySelector />
         <AddToCartButton onClick={this.handlePurchase} />
@@ -99,10 +93,10 @@ class BuyingZone extends Component {
 
 BuyingZone.propTypes = {
   product: PropTypes.object,
-  setProduct: PropTypes.func.isRequired,
+  setProduct: PropTypes.func,
   color: PropTypes.object,
-  size: PropTypes.string.isRequired,
-  quantity: PropTypes.number.isRequired,
+  size: PropTypes.string,
+  quantity: PropTypes.number,
 };
 
 export default BuyingZone;

@@ -4,9 +4,11 @@ const express = require('express');
 
 const app = express();
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use('/products', express.static(path.join(__dirname, '../client/dist')));
+app.listen(process.env.PORT || 3001);
 
 const { Product } = require('../database/db');
+const template = require('./template');
 
 /**
  * Gets the product associated with the id passed in the url. Sends the retrieved product back as
@@ -17,8 +19,10 @@ const { Product } = require('../database/db');
 app.get('/products/:id', async (req, res) => {
   const { id } = req.params;
   try {
-    const product = await Product.findOne({ id });
-    res.json(product);
+    let product = await Product.findOne({ id });
+    product = JSON.stringify(product);
+    const response = template({ product });
+    res.send(response);
   } catch (err) {
     // TODO: improve error handling
     res.sendStatus(400);

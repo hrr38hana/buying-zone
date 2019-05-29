@@ -3,3 +3,4 @@ dist/
 *.md
 *.json
 docs/
+client/compiled

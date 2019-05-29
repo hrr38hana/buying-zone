@@ -1,3 +1,6 @@
+const _ = require('lodash');
+
+module.exports = _.template(`
 <!DOCTYPE html>
 <html>
 
@@ -16,7 +19,10 @@
 
 <body>
   <div id="buying-zone"></div>
+  <script> window.__product__ = <%= product %> </script>
   <script src="bundle.js"></script>
 </body>
 
 </html>
+
+`);

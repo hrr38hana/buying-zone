@@ -12,16 +12,17 @@
     "node": ">=11.11.0"
   },
   "scripts": {
-    "start": "node ./server/server.js",
     "seed": "node ./database/seed.js",
-    "server:dev": "nodemon ./server/server.js",
+    "start": "node ./server/index.js",
+    "server:dev": "nodemon ./server/index.js",
     "build:dev": "webpack --config webpack.config.js --watch --mode=development",
     "pretest": "eslint \"**/*\" --parser-options=jsx:true",
     "test": "jest"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.4.4",
+    "@babel/runtime": "^7.4.5",
     "express": "^4.16.4",
+    "lodash": "^4.17.11",
     "mongoose": "^5.5.8",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -32,7 +33,9 @@
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
+    "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
@@ -51,10 +54,6 @@
     "jest-puppeteer": "^4.1.1",
     "jest-styled-components": "^6.3.1",
     "puppeteer": "^1.16.0",
-    "redux-devtools-cli": "0.0.1-1",
-    "remote-redux-devtools": "^0.5.16",
-    "superagent": "^5.0.5",
-    "supertest": "^4.0.2",
     "webpack": "^4.31.0",
     "webpack-cli": "^3.3.2",
     "webpack-dev": "^1.1.1"
