@@ -15,15 +15,16 @@
     "start": "node ./server/index.js",
     "seed": "node ./database/seed.js",
     "server:dev": "nodemon ./server/index.js",
-    "babel:dev": "babel ./server/app.jsx -o ./server/app.js",
+    "babel:dev": "babel ./client/src -d ./client/compiled",
     "pack:dev": "webpack --config webpack.config.js --watch --mode=development",
     "build:dev": "npm run babel:dev && npm run pack:dev",
     "pretest": "eslint \"**/*\" --parser-options=jsx:true",
     "test": "jest"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.4.4",
+    "@babel/runtime": "^7.4.5",
     "express": "^4.16.4",
+    "lodash": "^4.17.11",
     "mongoose": "^5.5.8",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -36,6 +37,7 @@
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
+    "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",

@@ -3,4 +3,4 @@ dist/
 *.md
 *.json
 docs/
-server/app.js
+client/compiled
