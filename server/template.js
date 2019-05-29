@@ -18,8 +18,8 @@ module.exports = _.template(`
 </head>
 
 <body>
-  <div id="buying-zone"> <%- content %> </div>
-  <script> window.__product__ = <%- product %> </script>
+  <div id="buying-zone"></div>
+  <script> window.__product__ = <%= product %> </script>
   <script src="bundle.js"></script>
 </body>
 

@@ -12,12 +12,10 @@
     "node": ">=11.11.0"
   },
   "scripts": {
-    "start": "node ./server/index.js",
     "seed": "node ./database/seed.js",
+    "start": "node ./server/index.js",
     "server:dev": "nodemon ./server/index.js",
-    "babel:dev": "babel ./client/src -d ./client/compiled",
-    "pack:dev": "webpack --config webpack.config.js --watch --mode=development",
-    "build:dev": "npm run babel:dev && npm run pack:dev",
+    "build:dev": "webpack --config webpack.config.js --watch --mode=development",
     "pretest": "eslint \"**/*\" --parser-options=jsx:true",
     "test": "jest"
   },

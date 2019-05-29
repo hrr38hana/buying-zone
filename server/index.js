@@ -4,11 +4,10 @@ const express = require('express');
 
 const app = express();
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use('/products', express.static(path.join(__dirname, '../client/dist')));
 app.listen(process.env.PORT || 3001);
 
 const { Product } = require('../database/db');
-const render = require('../client/compiled/app');
 const template = require('./template');
 
 /**
@@ -20,9 +19,9 @@ const template = require('./template');
 app.get('/products/:id', async (req, res) => {
   const { id } = req.params;
   try {
-    const product = await Product.findOne({ id });
-    const content = render(product);
-    const response = template({ content, product });
+    let product = await Product.findOne({ id });
+    product = JSON.stringify(product);
+    const response = template({ product });
     res.send(response);
   } catch (err) {
     // TODO: improve error handling

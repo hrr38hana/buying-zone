@@ -3,6 +3,6 @@ import thunk from 'redux-thunk';
 
 import reducer from './reducers/root';
 
-const store = createStore(reducer, applyMiddleware(thunk));
-
-export default store;
+export default preloadedState => (
+  createStore(reducer, preloadedState, applyMiddleware(thunk))
+);

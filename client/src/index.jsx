@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createGlobalStyle } from 'styled-components';
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import configureStore from './redux/configureStore';
 import BuyingZone from './redux/containers/BuyingZoneContainer';
 
 const GlobalStyle = createGlobalStyle`
@@ -20,10 +20,12 @@ const GlobalStyle = createGlobalStyle`
 const product = window.__product__;
 delete window.__product__;
 
-ReactDOM.hydrate(
+const store = configureStore({ product, color: product.colors[0] });
+
+ReactDOM.render(
   <Provider store={store}>
     <GlobalStyle />
-    <BuyingZone product={product} />
+    <BuyingZone />
   </Provider>,
   document.getElementById('buying-zone'),
 );
