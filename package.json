@@ -12,10 +12,12 @@
     "node": ">=11.11.0"
   },
   "scripts": {
-    "start": "node ./server/server.js",
+    "start": "node ./server/index.js",
     "seed": "node ./database/seed.js",
-    "server:dev": "nodemon ./server/server.js",
-    "build:dev": "webpack --config webpack.config.js --watch --mode=development",
+    "server:dev": "nodemon ./server/index.js",
+    "babel:dev": "babel ./server/app.jsx -o ./server/app.js",
+    "pack:dev": "webpack --config webpack.config.js --watch --mode=development",
+    "build:dev": "npm run babel:dev && npm run pack:dev",
     "pretest": "eslint \"**/*\" --parser-options=jsx:true",
     "test": "jest"
   },
@@ -32,6 +34,7 @@
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",

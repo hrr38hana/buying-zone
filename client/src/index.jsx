@@ -19,10 +19,13 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-ReactDOM.render(
+const product = window.__product__;
+delete window.__product__;
+
+ReactDOM.hydrate(
   <Provider store={store}>
     <GlobalStyle />
-    <BuyingZone />
+    <BuyingZone product={product} />
   </Provider>,
   document.getElementById('buying-zone'),
 );
