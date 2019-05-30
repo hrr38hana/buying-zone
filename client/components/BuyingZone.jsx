@@ -27,9 +27,17 @@ class BuyingZone extends Component {
   constructor(props) {
     super(props);
     this.handlePurchase = this.handlePurchase.bind(this);
-    const { product, setProduct } = this.props;
-    product.sizes = Object.keys(product.colors[0].quantityInInventory);
-    setProduct(product);
+  }
+
+  async componentDidMount() {
+    const { setProduct } = this.props;
+    let { product } = this.props;
+    if (!product) {
+      const response = await fetch('/products/12');
+      product = await response.json();
+      product.sizes = Object.keys(product.colors[0].quantityInInventory);
+      setProduct(product);
+    }
   }
 
   async handlePurchase() {

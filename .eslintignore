@@ -1,6 +1,5 @@
 node_modules/
-dist/
+public/
 *.md
 *.json
 docs/
-client/compiled
