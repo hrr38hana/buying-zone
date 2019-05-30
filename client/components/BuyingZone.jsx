@@ -31,7 +31,11 @@ class BuyingZone extends Component {
 
   async componentDidMount() {
     const { id, setProduct } = this.props;
-    const response = await fetch(`http://localhost:3001/products/${id}`);
+    const response = await fetch(`http://localhost:3001/products/${id}`, {
+      headers: {
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
+      },
+    });
     const product = await response.json();
     product.sizes = Object.keys(product.colors[0].quantityInInventory);
     setProduct(product);
