@@ -31,7 +31,7 @@ class BuyingZone extends Component {
 
   async componentDidMount() {
     const { id, setProduct } = this.props;
-    const response = await fetch(`http://localhost:3001/products/${id}`);
+    const response = await fetch(`http://localhost:3001/${id}`);
     const product = await response.json();
     product.sizes = Object.keys(product.colors[0].quantityInInventory);
     setProduct(product);
@@ -45,7 +45,7 @@ class BuyingZone extends Component {
       size,
       quantity,
     } = this.props;
-    const response = await fetch(`/products/${id}`, {
+    const response = await fetch(`/${id}`, {
       method: 'PUT',
       body: JSON.stringify({ colorId: color._id, size, quantity }),
       headers: {

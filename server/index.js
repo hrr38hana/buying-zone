@@ -4,7 +4,7 @@ const express = require('express');
 
 const app = express();
 app.use(express.json());
-app.use('/products', express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../public')));
 app.listen(process.env.PORT || 3001);
 
 const { Product } = require('../database/db');
@@ -15,7 +15,7 @@ const { Product } = require('../database/db');
  * @param {number} id - The product's human-readable id (think model number)
  * @returns {Product} - Sends the queried product back in the response
  */
-app.get('/products/:id', async (req, res) => {
+app.get('/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const product = await Product.findOne({ id });
@@ -36,7 +36,7 @@ app.get('/products/:id', async (req, res) => {
  * @param {number} quantityPurchased - The quantity to purchase (req.body)
  * @param {number} id - The product's human-readable id (think model number) (req.params in url)
  */
-app.put('/products/:id', async (req, res) => {
+app.put('/:id', async (req, res) => {
   const { id } = req.params;
   const { colorId, size, quantity } = req.body;
   try {
