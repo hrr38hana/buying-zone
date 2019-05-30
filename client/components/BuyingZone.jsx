@@ -30,7 +30,8 @@ class BuyingZone extends Component {
   }
 
   async componentDidMount() {
-    let { product, setProduct } = this.props;
+    const { setProduct } = this.props;
+    let { product } = this.props;
     if (!product) {
       const response = await fetch('/products/12');
       product = await response.json();
