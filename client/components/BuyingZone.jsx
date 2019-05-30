@@ -27,9 +27,21 @@ class BuyingZone extends Component {
   constructor(props) {
     super(props);
     this.handlePurchase = this.handlePurchase.bind(this);
+    // this.id = props.id;
+    // const { product, setProduct } = this.props;
+    // product.sizes = Object.keys(product.colors[0].quantityInInventory);
+    // setProduct(product);
+  }
+
+  // TODO better error handling
+  async componentDidMount() {
     const { product, setProduct } = this.props;
-    product.sizes = Object.keys(product.colors[0].quantityInInventory);
-    setProduct(product);
+    if (!product) {
+      const response = await fetch('/products/12');
+      const prod = await response.json();
+      prod.sizes = Object.keys(prod.colors[0].quantityInInventory);
+      setProduct(prod);
+    }
   }
 
   async handlePurchase() {
