@@ -45,6 +45,7 @@ app.put('/products/:id', async (req, res) => {
     const quantityInInventory = color.quantityInInventory.get(size);
     color.quantityInInventory.set(size, quantityInInventory - quantity);
     await product.save();
+    res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.json(product);
   } catch (err) {
     // TODO: improve error handling
