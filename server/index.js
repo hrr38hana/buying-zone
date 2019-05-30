@@ -19,6 +19,7 @@ app.get('/products/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const product = await Product.findOne({ id });
+    res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.json(product);
   } catch (err) {
     // TODO: improve error handling
