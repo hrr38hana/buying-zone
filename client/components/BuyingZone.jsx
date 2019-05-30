@@ -30,14 +30,11 @@ class BuyingZone extends Component {
   }
 
   async componentDidMount() {
-    const { setProduct } = this.props;
-    let { product } = this.props;
-    if (!product) {
-      const response = await fetch('/products/12');
-      product = await response.json();
-      product.sizes = Object.keys(product.colors[0].quantityInInventory);
-      setProduct(product);
-    }
+    const { id, setProduct } = this.props;
+    const response = await fetch(`http://localhost:3001/products/${id}`);
+    const product = await response.json();
+    product.sizes = Object.keys(product.colors[0].quantityInInventory);
+    setProduct(product);
   }
 
   async handlePurchase() {
@@ -100,6 +97,7 @@ class BuyingZone extends Component {
 }
 
 BuyingZone.propTypes = {
+  id: PropTypes.string,
   product: PropTypes.object,
   setProduct: PropTypes.func,
   color: PropTypes.object,

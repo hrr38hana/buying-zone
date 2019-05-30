@@ -17,10 +17,13 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const id = window.__id__ || '1';
+delete window.__id__;
+
 ReactDOM.render(
   <Provider store={configureStore()}>
     <GlobalStyle />
-    <BuyingZone />
+    <BuyingZone id={id} />
   </Provider>,
   document.getElementById('buying-zone'),
 );
