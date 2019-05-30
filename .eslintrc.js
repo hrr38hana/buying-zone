@@ -34,5 +34,6 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'react/forbid-prop-types': 'off',
     'react/require-default-props': 'off',
+    'prefer-destructuring': 'off',
   },
 };

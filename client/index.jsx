@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createGlobalStyle } from 'styled-components';
 import { Provider } from 'react-redux';
-import configureStore from './redux/configureStore';
+import configureStore from './redux/store';
 import BuyingZone from './redux/containers/BuyingZoneContainer';
 
 const GlobalStyle = createGlobalStyle`
@@ -17,13 +17,15 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const product = window.__product__;
-delete window.__product__;
+// const { pathname } = window.location;
+// const id = pathname.includes('/products/') ? pathname.split('/')[2] : null;
 
-const store = configureStore({ product, color: product.colors[0] });
+// const product = window.__product__;
+// delete window.__product__;
+// const store = configureStore({ product, color: product.colors[0] });
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={configureStore()}>
     <GlobalStyle />
     <BuyingZone />
   </Provider>,
