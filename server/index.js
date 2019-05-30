@@ -4,7 +4,7 @@ const express = require('express');
 
 const app = express();
 app.use(express.json());
-app.use('/products', express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, '../public')));
 app.listen(process.env.PORT || 3001);
 
 const { Product } = require('../database/db');
