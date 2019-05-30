@@ -22,8 +22,7 @@ coverage
 .grunt
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
-build/
-client/dist/bundle.js
+public/bundle.js
 
 # package-lock
 *package-lock*
