@@ -14,15 +14,22 @@ module.exports = _.template(`
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <!-- react-devtools -->
-  <script src="http://localhost:8097"></script>
+  <!-- <script src="http://localhost:8097"></script> -->
 </head>
 
 <body>
+  <!-- App layout -->
   <div id="buying-zone"></div>
-  <script> window.__product__ = <%= product %> </script>
+
+  <!-- CDN modules -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/styled-components/dist/styled-components.min.js"></script>
+
+  <!-- App scripts -->
+  <script> window.__id__ = <%= id %>; </script>
   <script src="bundle.js"></script>
 </body>
 
 </html>
-
 `);
