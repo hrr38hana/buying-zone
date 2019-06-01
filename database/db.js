@@ -1,7 +1,19 @@
 const mongoose = require('mongoose');
 
 mongoose.Promise = Promise;
-mongoose.connect('mongodb://mongo:27017/trekbikes', { useNewUrlParser: true });
+
+const connect = () => mongoose.connect('mongodb://mongo:27017/trekbikes', {
+  useNewUrlParser: true,
+});
+
+const db = mongoose.connection;
+db.on('error', async () => {
+  await mongoose.disconnect();
+  setTimeout(connect, 5000);
+});
+
+connect();
+// mongoose.connect('mongodb://mongo:27017/trekbikes', { useNewUrlParser: true });
 // mongoose.connect('mongodb://localhost:27017/trekbikes', { useNewUrlParser: true });
 
 const { Schema } = mongoose;
@@ -27,4 +39,4 @@ const productSchema = new Schema({
 const Color = mongoose.model('Color', colorSchema);
 const Product = mongoose.model('Product', productSchema);
 
-module.exports = { Product, Color, db: mongoose.connection };
+module.exports = { db, Product, Color };
