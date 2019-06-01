@@ -3,3 +3,6 @@ public/
 *.md
 *.json
 docs/
+
+*Dockerfile
+*.yml
