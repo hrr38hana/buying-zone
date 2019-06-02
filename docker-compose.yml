@@ -11,9 +11,9 @@ services:
   buying-zone:
     container_name: bz
     restart: always
-    image: bikeshaman/buying-zone:1.0.0
+    image: bikeshaman/buying-zone:1.0.12
     ports:
-      - "3001:3001"
+      - "80:3001"
     depends_on:
       - mongo
     links:

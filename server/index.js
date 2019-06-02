@@ -1,11 +1,12 @@
 const path = require('path');
-
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
-app.listen(process.env.PORT || 3001);
+app.listen(process.env.PORT || 3001, () => console.log('listening on 3001'));
 
 const { Product } = require('../database/db');
 
@@ -17,9 +18,10 @@ const { Product } = require('../database/db');
  */
 app.get('/:id', async (req, res) => {
   const { id } = req.params;
+  // res.set('Access-Control-Allow-Origin', 'http://3.91.24.124');
+  // res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
   try {
     const product = await Product.findOne({ id });
-    res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.json(product);
   } catch (err) {
     // TODO: improve error handling
@@ -39,16 +41,19 @@ app.get('/:id', async (req, res) => {
 app.put('/:id', async (req, res) => {
   const { id } = req.params;
   const { colorId, size, quantity } = req.body;
+  // TODO add cors middleware
+  // res.set('Access-Control-Allow-Origin', 'http://3.91.24.124');
+  // res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
   try {
     const product = await Product.findOne({ id });
     const color = await product.colors.id(colorId);
     const quantityInInventory = color.quantityInInventory.get(size);
     color.quantityInInventory.set(size, quantityInInventory - quantity);
     await product.save();
-    res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.json(product);
   } catch (err) {
     // TODO: improve error handling
+    console.error(err);
     res.sendStatus(400);
   }
 });
